@@ -4,6 +4,7 @@
 
 import { isFirebaseConfigured, db } from '../config/firebase'
 import { doc, setDoc, getDoc, serverTimestamp } from 'firebase/firestore'
+import { getToday } from './streakService'
 
 /**
  * Record a solved question for today
@@ -11,7 +12,7 @@ import { doc, setDoc, getDoc, serverTimestamp } from 'firebase/firestore'
 export async function recordSolvedQuestion(userId, questionId, topicName) {
   if (!isFirebaseConfigured || !userId) return
   try {
-    const today = new Date().toISOString().slice(0, 10)
+    const today = getToday()
     const ref = doc(db, 'users', userId, 'dailyLogs', today)
     const snap = await getDoc(ref)
 
@@ -40,7 +41,7 @@ export async function recordSolvedQuestion(userId, questionId, topicName) {
 export async function getTodayProgress(userId) {
   if (!isFirebaseConfigured || !userId) return { target: 3, completed: 0, questions: [] }
   try {
-    const today = new Date().toISOString().slice(0, 10)
+    const today = getToday()
     const ref = doc(db, 'users', userId, 'dailyLogs', today)
     const snap = await getDoc(ref)
     if (snap.exists()) return snap.data()

@@ -4,7 +4,7 @@
 // Implements Day 1/3/7/15/30 spaced repetition scheduling.
 // All data stored in localStorage (offline-first) with optional Firestore sync.
 
-import { getToday } from './streakService'
+import { getToday, formatLocalDate } from './streakService'
 
 const REVISION_INTERVALS = [1, 3, 7, 15, 30] // Days after solve date
 
@@ -19,7 +19,7 @@ export function scheduleRevision(questionData) {
   const dueDates = REVISION_INTERVALS.map(days => {
     const d = new Date(baseDate)
     d.setDate(d.getDate() + days)
-    return d.toISOString().slice(0, 10)
+    return formatLocalDate(d)
   })
 
   return {
@@ -188,7 +188,7 @@ export function completeRevision(questionId, rating) {
       const newDates = REVISION_INTERVALS.slice(0, 3).map(days => {
         const d = new Date(today)
         d.setDate(d.getDate() + days)
-        return d.toISOString().slice(0, 10)
+        return formatLocalDate(d)
       })
       item.dueDates = [...item.dueDates, ...newDates.filter(d => !item.dueDates.includes(d))]
       break

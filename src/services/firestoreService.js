@@ -8,6 +8,7 @@ import {
   doc, setDoc, getDoc, collection, query, where, getDocs,
   updateDoc, serverTimestamp, writeBatch,
 } from 'firebase/firestore'
+import { getToday } from './streakService'
 
 /**
  * Save user progress for a specific topic
@@ -81,7 +82,7 @@ export async function updateUserStats(userId, totalSolved) {
     const ref = doc(db, 'users', userId)
     await updateDoc(ref, {
       totalSolved,
-      lastActiveDate: new Date().toISOString().slice(0, 10),
+      lastActiveDate: getToday(),
       updatedAt: serverTimestamp(),
     })
   } catch (err) {

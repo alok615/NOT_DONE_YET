@@ -24,7 +24,7 @@ export default function RightSidebar({ userProfile, stats, topics = [] }) {
   const totalDue = revisionSummary.total
 
   // Today's solved count
-  const todayKey = new Date().toISOString().slice(0, 10)
+  const todayKey = getToday()
   const solvedToday = userProfile?.dailyActivity?.[todayKey] || 0
   const dailyGoalTarget = userProfile?.dailyGoalTarget || 3
   const goalPercentage = Math.min(100, Math.round((solvedToday / dailyGoalTarget) * 100))

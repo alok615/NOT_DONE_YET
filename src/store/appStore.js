@@ -5,6 +5,7 @@
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 import { addToRevisionQueue, removeFromRevisionQueue } from '../services/revisionService'
+import { getToday } from '../services/streakService'
 
 const useAppStore = create(
   persist(
@@ -67,7 +68,7 @@ const useAppStore = create(
 
         // Track solve date for revision
         if (!wasDone) {
-          question.solveDate = new Date().toISOString().slice(0, 10)
+          question.solveDate = getToday()
 
           // Add to revision queue (spaced repetition)
           try {
@@ -155,7 +156,7 @@ const useAppStore = create(
       getTodaySolved: () => {
         const data = get().data
         if (!data) return 0
-        const today = new Date().toISOString().slice(0, 10)
+        const today = getToday()
         let count = 0
         data.data.content.forEach((topic) => {
           topic.categoryList.forEach((cat) => {

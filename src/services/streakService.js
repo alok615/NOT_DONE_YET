@@ -8,19 +8,29 @@ import { db, isFirebaseConfigured } from '../config/firebase'
 import { doc, updateDoc, serverTimestamp } from 'firebase/firestore'
 
 /**
- * Get today's date as YYYY-MM-DD string
+ * Formats a Date object to YYYY-MM-DD in the local timezone
  */
-export function getToday() {
-  return new Date().toISOString().slice(0, 10)
+export function formatLocalDate(dateObj) {
+  const yyyy = dateObj.getFullYear()
+  const mm = String(dateObj.getMonth() + 1).padStart(2, '0')
+  const dd = String(dateObj.getDate()).padStart(2, '0')
+  return `${yyyy}-${mm}-${dd}`
 }
 
 /**
- * Get yesterday's date as YYYY-MM-DD string
+ * Get today's date as YYYY-MM-DD string in local timezone
+ */
+export function getToday() {
+  return formatLocalDate(new Date())
+}
+
+/**
+ * Get yesterday's date as YYYY-MM-DD string in local timezone
  */
 export function getYesterday() {
   const d = new Date()
   d.setDate(d.getDate() - 1)
-  return d.toISOString().slice(0, 10)
+  return formatLocalDate(d)
 }
 
 /**
