@@ -144,6 +144,53 @@ function DashboardPage() {
 
   return (
     <div className="page-content">
+      {/* GitHub Project Banner */}
+      <div style={{
+        background: '#22C55E',
+        borderRadius: 'var(--radius-xl)',
+        padding: '12px 24px',
+        marginBottom: 32,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        flexWrap: 'wrap',
+        gap: 16,
+        boxShadow: '0 4px 20px rgba(34, 197, 94, 0.2)'
+      }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+          <span style={{ fontSize: '1.2rem' }}>🚀</span>
+          <span style={{ color: '#000', fontWeight: 600, fontSize: '0.95rem' }}>
+            A blazing-fast, offline-first progress tracker for mastering Data Structures & Algorithms.
+          </span>
+        </div>
+        <a 
+          href="https://github.com/alok615/NOT_DONE_YET" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          style={{
+            background: '#fff',
+            color: '#000',
+            padding: '8px 16px',
+            borderRadius: 20,
+            fontSize: '0.85rem',
+            fontWeight: 700,
+            textDecoration: 'none',
+            display: 'inline-block',
+            transition: 'all 0.2s ease',
+            boxShadow: '0 2px 10px rgba(0,0,0,0.1)'
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.transform = 'translateY(-2px)'
+            e.currentTarget.style.boxShadow = '0 4px 15px rgba(0,0,0,0.2)'
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.transform = 'translateY(0)'
+            e.currentTarget.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)'
+          }}
+        >
+          This Project
+        </a>
+      </div>
       <div
         style={{
           display: 'flex',
