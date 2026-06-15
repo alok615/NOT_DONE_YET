@@ -12,14 +12,11 @@ import {
   Search,
   BookmarkCheck,
   Bookmark,
-  ExternalLink,
-  Play,
-  BookOpen,
-  Code,
   StickyNote,
   Check,
   Filter,
 } from 'lucide-react'
+import { TakeUForwardIcon, LeetCodeIcon, GFGIcon, YouTubeIcon } from '../components/PlatformIcons'
 import useAppStore from '../store/appStore'
 import { useAuth } from '../contexts/AuthContext'
 import { recordDailyActivity, removeSolvedQuestion } from '../services/streakService'
@@ -252,10 +249,10 @@ function TopicPage() {
                                   href={question.questionLink}
                                   target="_blank"
                                   rel="noopener noreferrer"
-                                  className="platform-link article"
-                                  title="Article"
+                                  className="platform-link tuf"
+                                  title="TakeUForward"
                                 >
-                                  <ExternalLink size={16} />
+                                  <TakeUForwardIcon size={18} />
                                 </a>
                               )}
                               {question.leetCodeLink && (
@@ -266,7 +263,7 @@ function TopicPage() {
                                   className="platform-link leetcode"
                                   title="LeetCode"
                                 >
-                                  <Code size={16} />
+                                  <LeetCodeIcon size={18} />
                                 </a>
                               )}
                               {question.gfgLink && (
@@ -277,7 +274,7 @@ function TopicPage() {
                                   className="platform-link gfg"
                                   title="GeeksForGeeks"
                                 >
-                                  <BookOpen size={16} />
+                                  <GFGIcon size={18} />
                                 </a>
                               )}
                               {question.youTubeLink && (
@@ -288,7 +285,7 @@ function TopicPage() {
                                   className="platform-link youtube"
                                   title="YouTube"
                                 >
-                                  <Play size={16} />
+                                  <YouTubeIcon size={18} />
                                 </a>
                               )}
                             </div>

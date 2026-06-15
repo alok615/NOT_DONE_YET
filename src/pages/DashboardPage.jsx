@@ -13,29 +13,29 @@ import { updateStreakOnActivity, getStreakInfo } from '../services/streakService
 
 // ── Topic emoji map ──
 const TOPIC_EMOJI = {
-  basics: '📚',
-  sorting: '🔢',
-  arrays: '📊',
-  'binary search': '🔍',
-  strings: '🔤',
+  basics: '📖',
+  sorting: '🔀',
+  arrays: '📋',
+  'binary search': '🎯',
+  strings: '✏️',
   'linked list': '🔗',
-  recursion: '🔄',
-  'bit manipulation': '⚡',
-  'stack': '📦',
-  queue: '📦',
-  'stack & queue': '📦',
-  'stack and queue': '📦',
-  'two pointers': '👉',
-  heaps: '🏔️',
-  greedy: '💰',
-  'binary tree': '🌳',
-  'binary search tree': '🌲',
-  graphs: '🕸️',
-  'dynamic programming': '🧠',
-  tries: '🔠',
-  matrix: '🧮',
-  backtracking: '↩️',
-  'sliding window': '🪟',
+  recursion: '🔁',
+  'bit manipulation': '💡',
+  'stack': '📚',
+  queue: '📬',
+  'stack & queue': '📚',
+  'stack and queue': '📚',
+  'two pointers': '👆',
+  heaps: '⛰️',
+  greedy: '🪙',
+  'binary tree': '🌿',
+  'binary search tree': '🌴',
+  graphs: '🗺️',
+  'dynamic programming': '🧩',
+  tries: '🔤',
+  matrix: '📐',
+  backtracking: '🔙',
+  'sliding window': '🖼️',
 }
 
 function getTopicEmoji(heading) {
@@ -43,7 +43,7 @@ function getTopicEmoji(heading) {
   for (const [key, emoji] of Object.entries(TOPIC_EMOJI)) {
     if (lower.includes(key)) return emoji
   }
-  return '📁'
+  return '📂'
 }
 
 // ── Time of day greeting ──

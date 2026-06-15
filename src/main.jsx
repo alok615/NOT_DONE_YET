@@ -17,6 +17,7 @@ import './styles/global.css'
 import './styles/animations.css'
 import './styles/components.css'
 import './styles/layout.css'
+import './styles/responsive.css'
 
 // Import question data
 import DiffChecker from './components/common/DiffChecker.js'
