@@ -16,6 +16,10 @@ import binarySearchImg from '../assets/topics/binary_search.png'
 import stringsImg from '../assets/topics/strings.png'
 import linkedListImg from '../assets/topics/linked_list.png'
 import bitManipulationImg from '../assets/topics/bit_manipulation.png'
+import stackQueueImg from '../assets/topics/stack_queue.png'
+import twoPointersImg from '../assets/topics/two_pointers.png'
+import heapsImg from '../assets/topics/heaps.png'
+import greedyImg from '../assets/topics/greedy.png'
 
 // ── Topic icon map ──
 const TOPIC_ICONS = {
@@ -27,13 +31,13 @@ const TOPIC_ICONS = {
   'linked list': { type: 'image', src: linkedListImg },
   recursion: { type: 'emoji', value: '🔁' },
   'bit manipulation': { type: 'image', src: bitManipulationImg },
-  'stack': { type: 'emoji', value: '📚' },
-  queue: { type: 'emoji', value: '📬' },
-  'stack & queue': { type: 'emoji', value: '📚' },
-  'stack and queue': { type: 'emoji', value: '📚' },
-  'two pointers': { type: 'emoji', value: '👆' },
-  heaps: { type: 'emoji', value: '⛰️' },
-  greedy: { type: 'emoji', value: '🪙' },
+  'stack': { type: 'image', src: stackQueueImg },
+  queue: { type: 'image', src: stackQueueImg },
+  'stack & queue': { type: 'image', src: stackQueueImg },
+  'stack and queue': { type: 'image', src: stackQueueImg },
+  'two pointers': { type: 'image', src: twoPointersImg },
+  heaps: { type: 'image', src: heapsImg },
+  greedy: { type: 'image', src: greedyImg },
   'binary tree': { type: 'emoji', value: '🌿' },
   'binary search tree': { type: 'emoji', value: '🌴' },
   graphs: { type: 'emoji', value: '🗺️' },
