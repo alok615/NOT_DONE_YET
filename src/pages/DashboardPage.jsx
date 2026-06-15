@@ -11,39 +11,45 @@ import WeeklyHeatmap from '../components/WeeklyHeatmap'
 import RightSidebar from '../components/RightSidebar'
 import { updateStreakOnActivity, getStreakInfo } from '../services/streakService'
 
-// ── Topic emoji map ──
-const TOPIC_EMOJI = {
-  basics: '📖',
-  sorting: '🔀',
-  arrays: '📋',
-  'binary search': '🎯',
-  strings: '✏️',
-  'linked list': '🔗',
-  recursion: '🔁',
-  'bit manipulation': '💡',
-  'stack': '📚',
-  queue: '📬',
-  'stack & queue': '📚',
-  'stack and queue': '📚',
-  'two pointers': '👆',
-  heaps: '⛰️',
-  greedy: '🪙',
-  'binary tree': '🌿',
-  'binary search tree': '🌴',
-  graphs: '🗺️',
-  'dynamic programming': '🧩',
-  tries: '🔤',
-  matrix: '📐',
-  backtracking: '🔙',
-  'sliding window': '🖼️',
+import arraysImg from '../assets/topics/arrays.png'
+import binarySearchImg from '../assets/topics/binary_search.png'
+import stringsImg from '../assets/topics/strings.png'
+import linkedListImg from '../assets/topics/linked_list.png'
+import bitManipulationImg from '../assets/topics/bit_manipulation.png'
+
+// ── Topic icon map ──
+const TOPIC_ICONS = {
+  basics: { type: 'emoji', value: '📖' },
+  sorting: { type: 'emoji', value: '🔀' },
+  arrays: { type: 'image', src: arraysImg },
+  'binary search': { type: 'image', src: binarySearchImg },
+  strings: { type: 'image', src: stringsImg },
+  'linked list': { type: 'image', src: linkedListImg },
+  recursion: { type: 'emoji', value: '🔁' },
+  'bit manipulation': { type: 'image', src: bitManipulationImg },
+  'stack': { type: 'emoji', value: '📚' },
+  queue: { type: 'emoji', value: '📬' },
+  'stack & queue': { type: 'emoji', value: '📚' },
+  'stack and queue': { type: 'emoji', value: '📚' },
+  'two pointers': { type: 'emoji', value: '👆' },
+  heaps: { type: 'emoji', value: '⛰️' },
+  greedy: { type: 'emoji', value: '🪙' },
+  'binary tree': { type: 'emoji', value: '🌿' },
+  'binary search tree': { type: 'emoji', value: '🌴' },
+  graphs: { type: 'emoji', value: '🗺️' },
+  'dynamic programming': { type: 'emoji', value: '🧩' },
+  tries: { type: 'emoji', value: '🔤' },
+  matrix: { type: 'emoji', value: '📐' },
+  backtracking: { type: 'emoji', value: '🔙' },
+  'sliding window': { type: 'emoji', value: '🖼️' },
 }
 
-function getTopicEmoji(heading) {
+function getTopicIcon(heading) {
   const lower = heading.toLowerCase()
-  for (const [key, emoji] of Object.entries(TOPIC_EMOJI)) {
-    if (lower.includes(key)) return emoji
+  for (const [key, icon] of Object.entries(TOPIC_ICONS)) {
+    if (lower.includes(key)) return icon
   }
-  return '📂'
+  return { type: 'emoji', value: '📂' }
 }
 
 // ── Time of day greeting ──
@@ -710,7 +716,7 @@ function DashboardPage() {
             const solved = topic.contentCompletedQuestions
             const total = topic.contentTotalQuestions
             const pct = total > 0 ? Math.round((solved / total) * 100) : 0
-            const emoji = getTopicEmoji(topic.contentHeading)
+            const icon = getTopicIcon(topic.contentHeading)
 
             return (
               <div
@@ -750,7 +756,11 @@ function DashboardPage() {
                     marginBottom: 12,
                   }}
                 >
-                  <span style={{ fontSize: 20 }}>{emoji}</span>
+                  {icon.type === 'image' ? (
+                    <img src={icon.src} alt="" style={{ width: 24, height: 24, objectFit: 'contain' }} />
+                  ) : (
+                    <span style={{ fontSize: 20 }}>{icon.value}</span>
+                  )}
                   <div
                     style={{
                       fontSize: 'var(--text-sm)',
