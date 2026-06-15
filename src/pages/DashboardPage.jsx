@@ -158,7 +158,7 @@ function DashboardPage() {
         boxShadow: '0 4px 20px rgba(34, 197, 94, 0.2)'
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-          <span style={{ fontSize: '1.2rem' }}>🚀</span>
+          <span style={{ fontSize: '1.2rem' }}>☕</span>
           <span style={{ color: '#000', fontWeight: 600, fontSize: '0.95rem' }}>
             A blazing-fast, offline-first progress tracker for mastering Data Structures & Algorithms.
           </span>
