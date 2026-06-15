@@ -7,6 +7,8 @@
 import { useMemo } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { TrendingDown, TrendingUp, CheckCircle, Circle, RotateCcw } from 'lucide-react'
+import { getToday } from '../services/streakService'
+import { getRevisionSummary } from '../services/revisionService'
 
 const cardStyle = {
   background: 'rgba(255,255,255,0.03)',
@@ -17,6 +19,9 @@ const cardStyle = {
 
 export default function RightSidebar({ userProfile, stats, topics = [] }) {
   const navigate = useNavigate()
+  
+  const revisionSummary = getRevisionSummary()
+  const totalDue = revisionSummary.total
 
   // Today's solved count
   const todayKey = new Date().toISOString().slice(0, 10)
@@ -292,12 +297,12 @@ export default function RightSidebar({ userProfile, stats, topics = [] }) {
               fontWeight: 700,
               padding: '2px 7px',
               borderRadius: 'var(--radius-full)',
-              background: 'rgba(0, 255, 136, 0.1)',
-              color: 'var(--accent-green)',
+              background: totalDue > 0 ? 'rgba(255, 60, 60, 0.15)' : 'rgba(0, 255, 136, 0.1)',
+              color: totalDue > 0 ? 'var(--color-danger)' : 'var(--accent-green)',
               fontFamily: 'var(--font-mono)',
             }}
           >
-            0
+            {totalDue}
           </span>
         </div>
         <div
@@ -309,20 +314,39 @@ export default function RightSidebar({ userProfile, stats, topics = [] }) {
         >
           Questions Due Today
         </div>
-        <div
-          style={{
-            fontSize: 'var(--text-xs)',
-            color: 'var(--text-tertiary)',
-            fontStyle: 'italic',
-            marginBottom: 14,
-            padding: '10px 0',
-            textAlign: 'center',
-            borderTop: '1px solid rgba(255,255,255,0.04)',
-            borderBottom: '1px solid rgba(255,255,255,0.04)',
-          }}
-        >
-          No revisions due yet.
-        </div>
+        
+        {totalDue > 0 ? (
+          <div style={{ marginBottom: 14 }}>
+            {revisionSummary.topics.slice(0, 3).map((topic, i) => (
+              <div key={i} style={{ 
+                display: 'flex', 
+                justifyContent: 'space-between',
+                padding: '4px 0',
+                fontSize: 'var(--text-xs)',
+                borderBottom: i < 2 ? '1px solid rgba(255,255,255,0.04)' : 'none'
+              }}>
+                <span style={{ color: 'var(--text-secondary)' }}>{topic.topicName}</span>
+                <span style={{ color: 'var(--text-primary)', fontFamily: 'var(--font-mono)' }}>{topic.count}</span>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div
+            style={{
+              fontSize: 'var(--text-xs)',
+              color: 'var(--text-tertiary)',
+              fontStyle: 'italic',
+              marginBottom: 14,
+              padding: '10px 0',
+              textAlign: 'center',
+              borderTop: '1px solid rgba(255,255,255,0.04)',
+              borderBottom: '1px solid rgba(255,255,255,0.04)',
+            }}
+          >
+            No revisions due yet.
+          </div>
+        )}
+        
         <button
           onClick={() => navigate('/revision')}
           style={{

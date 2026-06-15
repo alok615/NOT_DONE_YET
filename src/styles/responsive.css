@@ -40,9 +40,8 @@
     min-width: 200px;
   }
 
-  /* ── Topic grid: 2 columns on tablet ──
-     Inline gridTemplateColumns: 'repeat(3, 1fr)' needs override */
-  .page-content [style*="grid-template-columns"] {
+  /* ── Topic Library grid: 2 columns on tablet ── */
+  .topic-library-grid {
     grid-template-columns: repeat(2, 1fr) !important;
   }
 
@@ -159,7 +158,7 @@
   }
 
   /* ── Topic Library grid: force to 2 columns ── */
-  .page-content [style*="grid-template-columns"]:last-child {
+  .topic-library-grid {
     grid-template-columns: repeat(2, 1fr) !important;
     gap: 10px !important;
   }
@@ -353,7 +352,7 @@
   }
 
   /* ── Topic Library grid: single column ── */
-  .page-content [style*="grid-template-columns"] {
+  .topic-library-grid {
     grid-template-columns: 1fr !important;
   }
 

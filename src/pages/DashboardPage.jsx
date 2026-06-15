@@ -649,181 +649,182 @@ function DashboardPage() {
               </div>
             </div>
           </div>
-
-          {/* ── 6. Topic Library ── */}
-          <div>
-            <div
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'space-between',
-                marginBottom: 20,
-              }}
-            >
-              <h2
-                style={{
-                  fontSize: 'var(--text-lg)',
-                  fontWeight: 700,
-                  fontFamily: 'var(--font-sans)',
-                  color: 'var(--text-primary)',
-                  margin: 0,
-                }}
-              >
-                Topic Library
-              </h2>
-              <button
-                onClick={() => setShowAllTopics(prev => !prev)}
-                style={{
-                  background: 'none',
-                  border: 'none',
-                  color: 'var(--accent-green)',
-                  fontSize: 'var(--text-xs)',
-                  fontWeight: 600,
-                  cursor: 'pointer',
-                  fontFamily: 'var(--font-sans)',
-                  padding: '4px 8px',
-                  borderRadius: 'var(--radius-md)',
-                  transition: 'background 0.15s ease',
-                }}
-                onMouseEnter={(e) => (e.currentTarget.style.background = 'rgba(0,255,136,0.08)')}
-                onMouseLeave={(e) => (e.currentTarget.style.background = 'none')}
-              >
-                {showAllTopics ? '← Show less' : 'View all →'}
-              </button>
-            </div>
-
-            <div
-              style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(3, 1fr)',
-                gap: 14,
-                transition: 'all 0.3s ease',
-              }}
-            >
-              {(showAllTopics ? topics : topics.slice(0, 6)).map((topic, i) => {
-                const solved = topic.contentCompletedQuestions
-                const total = topic.contentTotalQuestions
-                const pct = total > 0 ? Math.round((solved / total) * 100) : 0
-                const emoji = getTopicEmoji(topic.contentHeading)
-
-                return (
-                  <div
-                    key={i}
-                    onClick={() => navigate(`/topic/${topic.contentPath.replace('/', '')}`)}
-                    role="button"
-                    tabIndex={0}
-                    onKeyDown={(e) => {
-                      if (e.key === 'Enter' || e.key === ' ') {
-                        e.preventDefault()
-                        navigate(`/topic/${topic.contentPath.replace('/', '')}`)
-                      }
-                    }}
-                    style={{
-                      ...glassCard,
-                      cursor: 'pointer',
-                      transition: 'all 0.2s ease',
-                      position: 'relative',
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.background = 'rgba(255,255,255,0.05)'
-                      e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)'
-                      e.currentTarget.style.transform = 'translateY(-2px)'
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.background = 'rgba(255,255,255,0.03)'
-                      e.currentTarget.style.borderColor = 'rgba(255,255,255,0.06)'
-                      e.currentTarget.style.transform = 'translateY(0)'
-                    }}
-                  >
-                    {/* Topic icon + name */}
-                    <div
-                      style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: 10,
-                        marginBottom: 12,
-                      }}
-                    >
-                      <span style={{ fontSize: 20 }}>{emoji}</span>
-                      <div
-                        style={{
-                          fontSize: 'var(--text-sm)',
-                          fontWeight: 600,
-                          color: 'var(--text-primary)',
-                          whiteSpace: 'nowrap',
-                          overflow: 'hidden',
-                          textOverflow: 'ellipsis',
-                        }}
-                      >
-                        {topic.contentHeading}
-                      </div>
-                    </div>
-
-                    {/* Solved count */}
-                    <div
-                      style={{
-                        fontSize: 'var(--text-xs)',
-                        color: 'var(--text-secondary)',
-                        marginBottom: 10,
-                      }}
-                    >
-                      <span
-                        style={{
-                          color: 'var(--accent-green)',
-                          fontWeight: 600,
-                          fontFamily: 'var(--font-mono)',
-                        }}
-                      >
-                        {solved}
-                      </span>
-                      /{total} solved
-                    </div>
-
-                    {/* Progress bar */}
-                    <div
-                      style={{
-                        width: '100%',
-                        height: 4,
-                        borderRadius: 2,
-                        background: 'rgba(255,255,255,0.06)',
-                        overflow: 'hidden',
-                        marginBottom: 8,
-                      }}
-                    >
-                      <div
-                        style={{
-                          width: `${pct}%`,
-                          height: '100%',
-                          borderRadius: 2,
-                          background:
-                            pct === 100
-                              ? 'var(--accent-green)'
-                              : pct > 0
-                                ? 'var(--accent-green-dim)'
-                                : 'transparent',
-                          transition: 'width 0.3s ease',
-                        }}
-                      />
-                    </div>
-
-                    {/* Last solved info */}
-                    <div
-                      style={{
-                        fontSize: 10,
-                        color: 'var(--text-tertiary)',
-                      }}
-                    >
-                      {solved > 0 ? `${pct}% complete` : 'Not started'}
-                    </div>
-                  </div>
-                )
-              })}
-            </div>
-          </div>
         </div>
 
         {/* ════════════ RIGHT SIDEBAR ════════════ */}
         <RightSidebar userProfile={userProfile} stats={stats} topics={topics} />
+      </div>
+
+      {/* ── 6. Topic Library (Full Width) ── */}
+      <div style={{ marginTop: 36 }}>
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            marginBottom: 20,
+          }}
+        >
+          <h2
+            style={{
+              fontSize: 'var(--text-lg)',
+              fontWeight: 700,
+              fontFamily: 'var(--font-sans)',
+              color: 'var(--text-primary)',
+              margin: 0,
+            }}
+          >
+            Topic Library
+          </h2>
+          <button
+            onClick={() => setShowAllTopics(prev => !prev)}
+            style={{
+              background: 'none',
+              border: 'none',
+              color: 'var(--accent-green)',
+              fontSize: 'var(--text-xs)',
+              fontWeight: 600,
+              cursor: 'pointer',
+              fontFamily: 'var(--font-sans)',
+              padding: '4px 8px',
+              borderRadius: 'var(--radius-md)',
+              transition: 'background 0.15s ease',
+            }}
+            onMouseEnter={(e) => (e.currentTarget.style.background = 'rgba(0,255,136,0.08)')}
+            onMouseLeave={(e) => (e.currentTarget.style.background = 'none')}
+          >
+            {showAllTopics ? '← Show less' : 'View all →'}
+          </button>
+        </div>
+
+        <div
+          className="topic-library-grid"
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(4, 1fr)',
+            gap: 14,
+            transition: 'all 0.3s ease',
+          }}
+        >
+          {(showAllTopics ? topics : topics.slice(0, 8)).map((topic, i) => {
+            const solved = topic.contentCompletedQuestions
+            const total = topic.contentTotalQuestions
+            const pct = total > 0 ? Math.round((solved / total) * 100) : 0
+            const emoji = getTopicEmoji(topic.contentHeading)
+
+            return (
+              <div
+                key={i}
+                onClick={() => navigate(`/topic/${topic.contentPath.replace('/', '')}`)}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault()
+                    navigate(`/topic/${topic.contentPath.replace('/', '')}`)
+                  }
+                }}
+                style={{
+                  ...glassCard,
+                  cursor: 'pointer',
+                  transition: 'all 0.2s ease',
+                  position: 'relative',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = 'rgba(255,255,255,0.05)'
+                  e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)'
+                  e.currentTarget.style.transform = 'translateY(-2px)'
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = 'rgba(255,255,255,0.03)'
+                  e.currentTarget.style.borderColor = 'rgba(255,255,255,0.06)'
+                  e.currentTarget.style.transform = 'translateY(0)'
+                }}
+              >
+                {/* Topic icon + name */}
+                <div
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 10,
+                    marginBottom: 12,
+                  }}
+                >
+                  <span style={{ fontSize: 20 }}>{emoji}</span>
+                  <div
+                    style={{
+                      fontSize: 'var(--text-sm)',
+                      fontWeight: 600,
+                      color: 'var(--text-primary)',
+                      whiteSpace: 'nowrap',
+                      overflow: 'hidden',
+                      textOverflow: 'ellipsis',
+                    }}
+                  >
+                    {topic.contentHeading}
+                  </div>
+                </div>
+
+                {/* Solved count */}
+                <div
+                  style={{
+                    fontSize: 'var(--text-xs)',
+                    color: 'var(--text-secondary)',
+                    marginBottom: 10,
+                  }}
+                >
+                  <span
+                    style={{
+                      color: 'var(--accent-green)',
+                      fontWeight: 600,
+                      fontFamily: 'var(--font-mono)',
+                    }}
+                  >
+                    {solved}
+                  </span>
+                  /{total} solved
+                </div>
+
+                {/* Progress bar */}
+                <div
+                  style={{
+                    width: '100%',
+                    height: 4,
+                    borderRadius: 2,
+                    background: 'rgba(255,255,255,0.06)',
+                    overflow: 'hidden',
+                    marginBottom: 8,
+                  }}
+                >
+                  <div
+                    style={{
+                      width: `${pct}%`,
+                      height: '100%',
+                      borderRadius: 2,
+                      background:
+                        pct === 100
+                          ? 'var(--accent-green)'
+                          : pct > 0
+                            ? 'var(--accent-green-dim)'
+                            : 'transparent',
+                      transition: 'width 0.3s ease',
+                    }}
+                  />
+                </div>
+
+                {/* Last solved info */}
+                <div
+                  style={{
+                    fontSize: 10,
+                    color: 'var(--text-tertiary)',
+                  }}
+                >
+                  {solved > 0 ? `${pct}% complete` : 'Not started'}
+                </div>
+              </div>
+            )
+          })}
+        </div>
       </div>
 
       {/* ════════════ HEATMAP EXPAND MODAL ════════════ */}
