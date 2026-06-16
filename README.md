@@ -2,7 +2,7 @@
 
 <p align="left">
   <img src="https://img.shields.io/badge/POWERED_BY-REACT-blue?style=for-the-badge&logo=react" alt="React" />
-  <img src="https://img.shields.io/badge/STATUS-LIVE-brightgreen?style=for-the-badge" alt="Status" />
+  <img src="https://img.shields.io/badge/STATUS-LIVE-brightgreen?style=for-the-badge" alt="not-done-yet.vercel.app" />
 </p>
 
 ## Overview 👀
@@ -24,7 +24,7 @@
 
 ## Deployed Website 🌎
 
-https://doneyet.vercel.app/
+not-done-yet.vercel.app
 
 ## Run Locally 💻
 
