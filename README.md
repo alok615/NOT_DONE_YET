@@ -1,116 +1,72 @@
-# !doneyet — DSA Practice Tracker
+# !doneyet 🚀
 
-> Your DSA journey isn't done yet. 🔥
+<p align="left">
+  <img src="https://img.shields.io/badge/POWERED_BY-REACT-blue?style=for-the-badge&logo=react" alt="React" />
+  <img src="https://img.shields.io/badge/STATUS-LIVE-brightgreen?style=for-the-badge" alt="Status" />
+</p>
 
-A modern, full-stack DSA practice tracker with 456+ curated problems, social features, and an AI-powered study buddy.
+## Overview 👀
 
-![React](https://img.shields.io/badge/React-19-61DAFB?logo=react)
-![Firebase](https://img.shields.io/badge/Firebase-Auth%20%2B%20Firestore-FFCA28?logo=firebase)
-![Vite](https://img.shields.io/badge/Vite-7-646CFF?logo=vite)
+![!doneyet Dashboard](./github-assets/dashboard.png)
 
-## ✨ Features
+* 📊 **Intelligent Dashboard:** A beautifully designed, fully responsive dark-mode interface tracking your overall DSA progress.
+* 🧠 **Spaced Repetition Engine:** An automated revision queue that ensures concepts stick in your long-term memory.
+* 🔥 **Consistency Heatmap:** A GitHub-style contribution graph and daily streak tracking to keep you motivated.
+* 📂 **Comprehensive Topic Library:** Granular tracking across 20+ crucial DSA topics featuring custom iconography.
+* ⚡ **Offline-First Architecture:** Built to be blazingly fast. All data is managed locally first and synced silently to Firebase.
+* 📱 **Mobile First Design:** Works flawlessly whether you're on your desktop or your smartphone.
 
-- **456+ DSA Problems** — Curated across 18 topics (Arrays, DP, Graphs, Trees, etc.)
-- **Google & GitHub Login** — Secure OAuth authentication via Firebase
-- **Progress Tracking** — Mark problems as done, add notes, bookmark favorites
-- **Leaderboard** — Compete with friends and see who solves the most
-- **Friend System** — Add friends, send requests, track each other's progress
-- **Ghost Mode** 👻 — Go invisible on the leaderboard while you study
-- **"Who Cares" AI Bot** 🤖 — Your friendly AI study buddy powered by Gemini
-  - Tracks your daily goals
-  - Recommends what to solve next
-  - Sends email reminders when you miss goals
-- **Dark Mode** — Beautiful dark-first design with glassmorphism UI
-- **Offline Support** — Works without internet thanks to Firestore persistence
+## Dependencies 🗃️
+* **React** – Frontend Framework
+* **Vite** – Build Tool
+* **Firebase** – Cloud Database Sync
+* **Zustand** – State Management
 
-## 🛠️ Tech Stack
+## Deployed Website 🌎
 
-| Layer | Technology |
-|-------|-----------|
-| Frontend | React 19, Vite 7, Framer Motion |
-| Styling | Custom CSS (glassmorphism design system) |
-| Auth | Firebase Authentication (Google + GitHub OAuth) |
-| Database | Cloud Firestore |
-| AI | Google Gemini API |
-| Email | EmailJS |
-| State | Zustand |
-| Icons | Lucide React |
-| Routing | React Router v7 |
+https://doneyet.vercel.app/
 
-## 🚀 Getting Started
+## Run Locally 💻
 
-### Prerequisites
-- Node.js 18+
-- A Firebase project ([create one here](https://console.firebase.google.com/))
-- Gemini API key ([get one here](https://aistudio.google.com/apikey))
+Clone the repository
 
-### Setup
+For Windows (Git Bash) / Linux (Terminal):
 
-1. **Clone the repo**
-   ```bash
-   git clone https://github.com/YOUR_USERNAME/doneyet.git
-   cd doneyet
-   ```
-
-2. **Install dependencies**
-   ```bash
-   npm install
-   ```
-
-3. **Configure environment variables**
-   ```bash
-   cp .env.example .env
-   ```
-   Fill in your Firebase config, Gemini API key, and EmailJS credentials in `.env`.
-
-4. **Firebase Setup**
-   - Enable **Google** and **GitHub** sign-in methods in Firebase Console → Authentication
-   - Create a **Firestore database** in test mode
-   - For GitHub OAuth, create an OAuth app at [github.com/settings/developers](https://github.com/settings/developers)
-
-5. **Start the dev server**
-   ```bash
-   npm run dev
-   ```
-
-6. Open [http://localhost:3000](http://localhost:3000) 🎉
-
-## 📁 Project Structure
-
-```
-src/
-├── config/          # Firebase configuration
-├── contexts/        # React contexts (Auth)
-├── store/           # Zustand state management
-├── styles/          # CSS design system (5 files)
-├── pages/           # Page components
-│   ├── LoginPage
-│   ├── SetupProfilePage
-│   ├── DashboardPage
-│   ├── TopicPage
-│   ├── LeaderboardPage
-│   ├── FriendsPage
-│   └── ChatPage
-├── components/      # Reusable components
-│   ├── Sidebar
-│   ├── TopBar
-│   ├── TopicCard
-│   ├── ProgressRing
-│   ├── ChatWidget
-│   └── ...
-├── services/        # Backend services
-│   ├── firestoreService
-│   ├── friendService
-│   ├── chatService
-│   ├── goalService
-│   └── emailService
-└── App.jsx          # Root component with routing
+```bash
+git clone https://github.com/alok615/NOT_DONE_YET.git
 ```
 
-## 📝 License
+Change directory
 
-MIT
+```bash
+cd NOT_DONE_YET
+```
 
----
+Install dependencies
 
-Built with 💜 and lots of ☕
+```bash
+npm install
+```
+
+Start the development server
+
+```bash
+npm run dev
+```
+
+!doneyet runs on port 5173 of your local machine.
+
+## How to Contribute 💥
+* Take a look at the existing Issues or create your own issues.
+* Wait for the issue to be assigned to you, after which you can start working on it.
+* Fork the repository and create a branch for the issue you are working on.
+* Create a Pull Request, which will be promptly reviewed and suggestions will be added to improve it.
+* Add screenshots to help explain what the code is all about.
+
+## Developed By 🧑‍💻
+
+<img src="./github-assets/profile.png" width="200" style="border-radius: 50%;" alt="Alok Kumar Singh" />
+
+**Alok Kumar Singh**
+
+[LinkedIn](https://www.linkedin.com/in/aloksingh74) | [Email](mailto:aloksingh18487@gmail.com)
