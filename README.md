@@ -24,7 +24,7 @@
 
 ## Deployed Website 🌎
 
-not-done-yet.vercel.app
+https://not-done-yet.vercel.app/
 
 ## Run Locally 💻
 
